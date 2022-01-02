@@ -4,7 +4,7 @@ function electricity_bill($units)
 {
     if ($units <= 50) {
         echo "Electricity-Bill= " . $units * 3.50;
-    } elseif ($units <= 150) {
+    } elseif ($units > 50 && $units <= 150) {
         echo "Electricity-Bill= " . $units * 4;
     } else {
         echo "Electricity-Bill= " . $units * 6.50;
