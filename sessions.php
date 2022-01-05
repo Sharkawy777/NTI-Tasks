@@ -1,4 +1,6 @@
 <?php
+
+//Session 1
 //$age = 20;
 //
 //function getAge(){
@@ -33,3 +35,4 @@
 //    echo "<br>";
 //}
 
+//Session 3
