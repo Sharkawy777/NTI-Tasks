@@ -1,18 +1,30 @@
 <?php
 
 /*
-Create a form with the following inputs (name, email, password, address,, linkedin url) Validate inputs then return message to user .
-validation rules ...
-name  = [required , string] -> Done
-email = [required,email] ->
-password = [required,min = 6] -> Done
-address = [required,length = 10 chars] -> Done
-linkedin url = [required | url] -> Done
-Don't use Filters or regular expressions .
+ * Create a form with the following inputs (name, email, password, address,, linkedin url) Validate inputs then return message to user .
+ * validation rules ...
+ * name  = [required , string] -> Done
+ * email = [required,email] -> Done
+ * password = [required,min = 6] -> Done
+ * address = [required,length = 10 chars] -> Done
+ * linkedin url = [required | url] -> Done
+ * Don't use Filters or regular expressions .
 */
 
+$errors = [];
+
+function email_validate($email)
+{
+    global $errors;
+    $pos1 = stripos($email, '@');
+    $pos2 = stripos($email, '.', $pos1);
+    if (empty($email)) {
+         $errors['emailEmpty'] = 'please enter your email';
+    } elseif (is_numeric($email[0]) or $pos1 === false or $pos2 === false) {
+        $errors['isEmail'] = 'please enter a valid email';
+    }
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = [];
 
     //name validation
     if (empty($_POST['name'])) {
@@ -43,13 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //email validation
-    if (empty($_POST['email'])) {
-        $errors['emailEmpty'] = 'please enter your email';
-    }
-//    elseif ($_POST['email'] == 0) {
-//        $errors['isEmail'] = 'please enter a valid email';
-//    }
-
+    $email = $_POST['email'];
+    email_validate($email);
 
     //check errors array
     if (count($errors) > 0) {
@@ -88,7 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="form-group">
             <label for="exampleInputEmail">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+<!--            type ="email"      aria-describedby="emailHelp" -->
+            <input type="text" class="form-control" id="exampleInputEmail1" name="email"
                    placeholder="Enter email">
         </div>
 
@@ -105,7 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="form-group">
             <label for="linkedin">LinkedIn url</label>
-            <input type="url" class="form-control" id="linkedin" name="linkedin"
+<!--            url-->
+            <input type="text" class="form-control" id="linkedin" name="linkedin"
                    placeholder="https://www.linkedin.com/in/xxxxxxxx">
         </div>
 
