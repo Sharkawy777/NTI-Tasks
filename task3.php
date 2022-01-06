@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="form-group">
             <label for="exampleInputEmail">Email address</label>
 <!--            type ="email"      aria-describedby="emailHelp" -->
-            <input type="text" class="form-control" id="exampleInputEmail1" name="email"
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
                    placeholder="Enter email">
         </div>
 
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="form-group">
             <label for="linkedin">LinkedIn url</label>
 <!--            url-->
-            <input type="text" class="form-control" id="linkedin" name="linkedin"
+            <input type="url" class="form-control" id="linkedin" name="linkedin"
                    placeholder="https://www.linkedin.com/in/xxxxxxxx">
         </div>
 
