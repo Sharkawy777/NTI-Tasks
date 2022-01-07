@@ -20,7 +20,7 @@ function email_validate($email)
     $pos2 = stripos($email, '.', $pos1);
     if (empty($email)) {
          $errors['emailEmpty'] = 'please enter your email';
-    } elseif (is_numeric($email[0]) or $pos1 === false or $pos2 === false) {
+    } elseif (is_numeric($email[0]) or $pos1 === 0 or $pos1 === false or $pos2 === false) {
         $errors['isEmail'] = 'please enter a valid email';
     }
 }
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //linkedin validation
     if (empty($_POST['linkedin'])) {
         $errors['linkedinEmpty'] = 'please enter your linkedin url';
-    } elseif (!is_link($_POST['linkedin']) && substr_compare($_POST['linkedin'], 'https://www.linkedin.com/in/', 0, 27)) {
+    } elseif (!is_link($_POST['linkedin']) && substr_compare($_POST['linkedin'], 'https://www.linkedin.com/in/', 0, 27)) {//stripos
         $errors['isLinkedin'] = 'please enter a valid linkedin url';
     }
 
@@ -68,6 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="form-group">
             <label for="exampleInputEmail">Email address</label>
 <!--            type ="email"      aria-describedby="emailHelp" -->
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
                    placeholder="Enter email">
         </div>
 
@@ -114,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="form-group">
             <label for="linkedin">LinkedIn url</label>
 <!--            url-->
-            <input type="url" class="form-control" id="linkedin" name="linkedin"
+            <input type="text" class="form-control" id="linkedin" name="linkedin"
                    placeholder="https://www.linkedin.com/in/xxxxxxxx">
         </div>
 
