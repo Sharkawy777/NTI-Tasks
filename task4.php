@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <h2>Upload Image</h2
             <!--        <?php echo $_SERVER['PHP_SELF']; ?>-->
-    <form action="profilepage.php" method="post" enctype="multipart/form-data">
+    <form action="profilePage.php" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="exampleInputName">Name</label>
