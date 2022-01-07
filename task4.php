@@ -22,7 +22,6 @@ function clean_data($data)
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = clean_data($_POST['name']);
-    $gender = $_POST['gender'];
     $password = clean_data($_POST['password']);
     $address = clean_data($_POST['address']);
     $email = clean_data($_POST['email']);
@@ -51,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //gender validation
-    if (empty($gender)) {
+    if (!empty($gender)) {
+        $gender = clean_data($_POST['gender']);
+    } else {
         $errors['gender'] = 'please select your gender';
     }
 
@@ -102,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         $_SESSION['user'] = ["name" => $name, "email" => $email, "gender" => $gender, "password" => $password, "address" => $address, "linkedin" => $linkedin, "imageName" => $imgName];
-        //        echo 'Registered Successfully, Welcome - ' . $name;
+        echo 'Registered Successfully Data Saved In Session, Welcome - ' . $name;
     }
 
 
@@ -124,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <h2>Upload Image</h2
             <!--        <?php echo $_SERVER['PHP_SELF']; ?>-->
-    <form action="profilePage.php" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="exampleInputName">Name</label>
@@ -155,7 +156,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label class="form-check-label" for="male">
                 Male
             </label>
-
+        </div>
+        <div>
             <input class="form-check-input" type="radio" name="gender" value="female">
             <label class="form-check-label" for="female">
                 female
@@ -163,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="form-group">
-            <label for="linkedin">LinkedIn url</label>
+            <label for="linkedin">LinkedIn profile</label>
             <input type="url" class="form-control" id="linkedin" name="linkedin"
                    placeholder="https://www.linkedin.com/in/xxxxxxxx">
         </div>
