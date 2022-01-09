@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //gender validation
-    if (!empty($gender)) {
+    if (!isset($gender)) {
         $gender = clean_data($_POST['gender']);
     } else {
         $errors['gender'] = 'please select your gender';
