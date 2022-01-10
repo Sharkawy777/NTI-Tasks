@@ -14,11 +14,15 @@ echo "<h1> Blog </h1>";
 echo "<a href='profilePage.php'>Create Article</a> || ";
 echo "<a href='test.php'>Delete all Article</a><br>";
 
-$file = fopen('text.txt',"r") or die('unable to open file');
-while(!feof($file)) {
+$file = fopen('text.txt', "r") or die('unable to open file');
+while (!feof($file)) {
     $l = fgets($file);
-    echo $l."<br>";
-}
-//echo fread($file,filesize('text.txt'));
+    if (!empty($l)) {
+//        echo $l . " <a href='test1.php'>Delete Article</a><br>";
+        setcookie('row', $l, time() + 86400, '/');
+        echo $l . " <a href='test1.php'> Delete Article</a><br>";
+    }
 
+//echo fread($file,filesize('text.txt'));
+}
 fclose($file);
