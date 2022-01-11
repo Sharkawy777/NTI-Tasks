@@ -17,10 +17,10 @@ echo "<a href='test.php'>Delete all Article</a><br>";
 $file = fopen('text.txt', "r") or die('unable to open file');
 while (!feof($file)) {
     $l = fgets($file);
+    $lineArray = explode(',',$l);
     if (!empty($l)) {
-//        echo $l . " <a href='test1.php'>Delete Article</a><br>";
         setcookie('row', $l, time() + 86400, '/');
-        echo $l . " <a href='test1.php'> Delete Article</a><br>";
+        echo $l . " <a href='test1.php?id=".$lineArray[0]."'> Delete Article</a><br>";
     }
 
 //echo fread($file,filesize('text.txt'));

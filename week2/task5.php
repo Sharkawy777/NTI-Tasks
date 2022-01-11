@@ -8,7 +8,7 @@
  * Then Store data into text file , display blog data ,  stored data can be deleted.
  */
 
-function clean_data($data)
+function clean($data)
 {
     $data = trim($data);
     $data = strip_tags($data);
@@ -34,8 +34,8 @@ function upload_image($imgName, $imgTempPath, $imgSize, $imgType, $errors)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = clean_data($_POST['title']);
-    $content = clean_data($_POST['content']);
+    $title = $clean($_POST['title']);
+    $content = $clean($_POST['content']);
     $imgName = strtolower($_FILES['image']['name']);
     $imgTempPath = $_FILES['image']['tmp_name'];
     $imgSize = $_FILES['image']['size'];

@@ -13,7 +13,7 @@ session_start();
  * then create a profilePage.php to display Student Data .
  */
 
-function clean_data($data)
+function clean($data)
 {
     $data = trim($data);
     $data = strip_tags($data);
@@ -21,11 +21,11 @@ function clean_data($data)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = clean_data($_POST['name']);
-    $password = clean_data($_POST['password']);
-    $address = clean_data($_POST['address']);
-    $email = clean_data($_POST['email']);
-    $linkedin = clean_data($_POST['linkedin']);
+    $name = clean($_POST['name']);
+    $password = clean($_POST['password']);
+    $address = clean($_POST['address']);
+    $email = clean($_POST['email']);
+    $linkedin = clean($_POST['linkedin']);
 
     //Image upload
     $imgName = strtolower($_FILES['image']['name']);
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //gender validation
     if (!isset($gender)) {
-        $gender = clean_data($_POST['gender']);
+        $gender = clean($_POST['gender']);
     } else {
         $errors['gender'] = 'please select your gender';
     }
