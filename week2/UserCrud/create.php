@@ -22,9 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //check errors array
     if (count($errors) > 0) {
-        foreach ($errors as $key => $value) {
-            echo '> ' . $key . ' : ' . $value . '<br>';
-        }
+        print_error($errors);
     } else {
         $finalImgName= $_SESSION['finalImgName'];
         $query = "insert into blog (`title`, `content`, `date`, `image`) values ('$title','$content','$date','$finalImgName')";

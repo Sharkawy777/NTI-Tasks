@@ -34,12 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $errors = image_validate($imgName, $imgTempPath, $imgSize, $imgType, $errors);
 
     if (count($errors) > 0) {
-        foreach ($errors as $key => $value) {
-            # code...
-            echo '* ' . $key . ' : ' . $value . '<br>';
-        }
+        print_error($errors);
     } else {
-        $finalImgName= $_SESSION['finalImgName'];
+        $finalImgName = $_SESSION['finalImgName'];
         $sql = "update blog set title='$title' , content = '$content', date = '$date', image = '$finalImgName' where id  = $id";
         $op = mysqli_query($conn, $sql);
         if ($op) {

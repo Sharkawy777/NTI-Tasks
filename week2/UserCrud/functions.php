@@ -57,3 +57,9 @@ function data_validate($title, $content, $date, $errors)
     }
     return $errors;
 }
+function print_error($errors){
+    foreach ($errors as $key => $value) {
+        # code...
+        echo '* ' . $key . ' : ' . $value . '<br>';
+    }
+}
