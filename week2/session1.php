@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 
 <div class="container">
-    <h2>Create Account</h2
+    <h2>Create Account</h2>
             <!--        <?php echo $_SERVER['PHP_SELF']; ?>-->
     <form action="" method="post" enctype="multipart/form-data">
 
